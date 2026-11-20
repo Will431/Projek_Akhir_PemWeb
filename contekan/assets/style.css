@@ -1,0 +1,4 @@
+.food-photo{height:130px;object-fit:cover;background:var(--bs-tertiary-bg);display:flex;align-items:center;justify-content:center;font-size:3rem;border-radius:.375rem .375rem 0 0}
+.card{transition:transform .15s}.menu-card:hover{transform:translateY(-3px)}
+.bar-chart{display:flex;align-items:flex-end;gap:6px;height:140px}
+.bar-chart div{flex:1;text-align:center;font-size:.7rem}.bar-chart span{display:block;background:var(--bs-primary);border-radius:4px 4px 0 0}
