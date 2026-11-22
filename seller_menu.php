@@ -91,7 +91,15 @@ pageStart($title, $head);
 ?>
 
 <!-- Form tambah / ubah menu -->
-<div class="card">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
     <h4><?= $edit['id'] ? 'Ubah' : 'Tambah' ?> Menu</h4>
 
     <form method="post" enctype="multipart/form-data" data-validate>
@@ -175,3 +183,5 @@ pageStart($title, $head);
 </div>
 
 <?php pageEnd($js); ?>
+</body>
+</html>

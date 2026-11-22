@@ -8,8 +8,8 @@
 
     if(isset($_POST['register'])) {
         $name = $_POST['name'];
-        $email = $_POST['email'] require;
-        $password = $_POST['password'] require;
+        $email = $_POST['email'];
+        $password = $_POST['password'];
         $role = in_array($_POST['role'], ['mahasiswa','penjual']) ?
         $_POST['role'] : 'mahasiswa';
 
@@ -67,42 +67,43 @@
     </head>
     <body>
     <div class="container py-5">
-    <div class="row justify-content-center"><div class="col-md-5">
-    <div class="card"><div class="card-body">
-      <h3 class="brand">🍽️ KantinKu</h3>
-      <p class="subtitle">Buat akun untuk mulai memesan atau berjualan</p>
-
-      <?php if ($pesan): ?>
-        <div class="alert alert-<?= $tipe ?>"><?= htmlspecialchars($pesan) ?></div>
-      <?php endif; ?>
-
-      <form method="post">
-        <div class="mb-3">
-          <label class="form-label">Nama</label>
-          <input type="text" name="name" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Kata sandi</label>
-          <input type="password" name="password" class="form-control" minlength="6" required>
-        </div>
-        <div class="mb-3">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="brand">🍽️ KantinKu</h3>
+              <p class="subtitle">Buat akun untuk mulai memesan atau berjualan</p>
+              <?php if ($pesan): ?>
+                <div class="alert alert-<?= $tipe ?>"><?= htmlspecialchars($pesan) ?></div><?php endif; ?>
+                <form method="post">
+                <div class="mb-3">          
+                <label class="form-label">Nama</label>          
+                <input type="text" name="name" class="form-control" required>
+              </div>
+              <div class="mb-3">
+              <label class="form-label">Email</label>          
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+            <label class="form-label">Kata sandi</label>
+            <input type="password" name="password" class="form-control" minlength="6" required>
+          </div>
+          <div class="mb-3">
           <label class="form-label">Daftar sebagai</label>
           <select name="role" class="form-select">
-            <option value="mahasiswa">Mahasiswa</option>
-            <option value="penjual">Penjual</option>
-          </select>
+          <option value="mahasiswa">Mahasiswa</option>
+                      <option value="penjual">Penjual</option>
+                    </select>
+                  </div>
+                  <button type="submit" name="register" class="btn btn-daftar w-100">Daftar</button>
+                </form>
+                <hr>
+                <a href="login.php">Sudah punya akun? Masuk</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <button type="submit" name="register" class="btn btn-daftar w-100">Daftar</button>
-      </form>
-      <hr>
-      <a href="login.php">Sudah punya akun? Masuk</a>
-    </div></div>
-    </div></div>
-    </div>
+      </div>
     </body>
     </html>
 

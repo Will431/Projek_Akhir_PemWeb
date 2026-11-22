@@ -74,9 +74,17 @@ $head = "<style>$css</style>";
 pageStart($title, $head);
 ?>
 
-<h3>Dashboard Penjual</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbord Penjual</title>
+</head>
+<body>
+    <h3>Dashboard Penjual</h3>
 
-<!-- Ringkasan -->
+
 <div class="kpi-grid">
     <?php foreach ($kpi as $label => $val): ?>
         <div class="card kpi">
@@ -150,3 +158,5 @@ pageStart($title, $head);
 </div>
 
 <?php pageEnd(); ?>
+</body>
+</html>

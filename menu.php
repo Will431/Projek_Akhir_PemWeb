@@ -24,9 +24,11 @@ $menus = $st->fetchAll();
 $title = 'Katalog Menu';
 
 $css = <<<'CSS'
-.product{transition:transform .15s}
-.product:hover{transform:translateY(-3px)}
-.photo{height:200px;width:100%;object-fit:cover;background:#f1f1f1;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.filters .input{flex:1;min-width:140px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.product{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s}.product:hover{transform:translateY(-3px)}
+.product .body{padding:12px;display:flex;flex-direction:column;flex:1;gap:4px}.product form{margin-top:auto}
+.photo{height:130px;width:100%;object-fit:cover;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:3rem}
 CSS;
 
 $js = <<<'JS'

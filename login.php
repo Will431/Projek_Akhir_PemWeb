@@ -1,41 +1,38 @@
-<?php
-    session_start();
-    include 'koneksi.php';
+<?php 
+require 'config.php';
+if (isset($_GET['logout'])) { 
+  $_SESSION = []; session_destroy(); 
+  header('Location: login.php'); exit; 
+  }
+  
+  if (!empty($_SESSION['user'])) home();
+  $error = '';
+  
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? ''); 
+    $pass = $_POST['password'] ?? '';
+    $st = $pdo->prepare(
+      "SELECT * FROM users WHERE email=?"
+      );
+       
+      $st->execute([$email]); 
+      $user = $st->fetch();
 
-    if (!empty($_SESSION['user'])) redirect('index.php');
-    $error = '';
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $email = trim($_POST['email'] ?? '');
-        $pass = $_POST['password'] ?? '';
-        
-        $query = mysqli_prepare(
-            $conn,
-            "SELECT * FROM USERS WHERE email = ?"
-        );
-
-        mysqli_stmt_bind_param($query, ,'s', $email);
-        mysqli_stmt_execute($query);
-
-        $result = mysqli_stmt_get_result($query);
-        $user = mysqli_fetch_assoc($query);
-
-        $st->execute([$email]); $user = $st->fetch();
-
-        if ($user && password_verify($password, $user['password'])) {
+      if ($user && password_verify($pass, $user['password'])) {
         session_regenerate_id(true);
+        $_SESSION['user'] = ['id' => $user['id'], 'name' => $user['name'], 'role' => $user['role']];
 
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['name']    = $user['name'];
-        $_SESSION['role']    = $user['role'];
-
-        //set cookie tolong ya pot aku gtw soale
-        }
-        
+        if (!empty($_POST['remember'])) setcookie('remember_email', $email, time() + 86400 * 30, '/', '', false, true);
+        else setcookie('remember_email', '', time() - 3600, '/');
+        home();
     }
+    $error = 'Email atau kata sandi salah.';
+}
+$title = 'Masuk';
+pageStart($title); $saved = $_COOKIE['remember_email'] ?? '';
 
+?> 
 
-?>
 <div class="auth-box"><div class="card">
   <h3>Masuk</h3>
   <?php if ($error): ?><div class="notice danger"><?= e($error) ?></div><?php endif; ?>
