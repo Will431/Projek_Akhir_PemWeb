@@ -1,5 +1,5 @@
 <?php 
-require 'config.php';
+include 'config.php';
 if (isset($_GET['logout'])) { 
   $_SESSION = []; session_destroy(); 
   header('Location: login.php'); exit; 

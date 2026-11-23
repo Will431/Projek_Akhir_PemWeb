@@ -1,5 +1,5 @@
 <?php 
-require 'config.php'; 
+include 'config.php'; 
 need('mahasiswa');
 
 $uid = $_SESSION['user']['id'];

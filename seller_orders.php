@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+include 'config.php';
 need('penjual');
 
 // ---------- Proses ubah status (POST) ----------
